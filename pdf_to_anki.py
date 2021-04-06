@@ -1,13 +1,10 @@
+import pdf2image
+from pdf2image import convert_from_path as cfp
+import ntpath
 import cv2
-import numpy as np
 import os
 import time
 from glob import glob
-
-import pdf2image
-from pdf2image import convert_from_path as cfp
-import time
-
 
 
 try:
@@ -56,15 +53,11 @@ rand_int = round(rand_int)
 complete_list = []
 
 
-import ntpath
 
 direct_copy = True
 
-#direct_path = "./home/amritpal/.local/share/Anki2/User 1/collection.media/"
-
 
 for filename in file_list: 
-	#filename = './images/Flashcards-0.jpg'
 	image = cv2.imread(filename)
 
 	def crop_doublet_anki_notes(image , x , y):
@@ -94,3 +87,11 @@ df = pd.DataFrame(complete_list)
 #print(df)
 
 df.to_csv("output.csv", index = None,header=False)
+#Use this Output.csv file to load the anki deck to Anki software.
+
+#Before loading the CSV file, copy the images generated in images_final folder to following path - 
+# "./home/$$$$$YOUR USER NAME$$$$$$$$/.local/share/Anki2/User 1/collection.media/"     # in Ubuntu 
+# e.g.  "./home/amrit/.local/share/Anki2/User 1/collection.media/"
+
+
+
