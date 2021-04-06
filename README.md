@@ -3,9 +3,6 @@
 Python implementation , one-line implementation for coding newbies!
 
 
-AIM - 
-1. 
-
 ## Goals - 
 - [x] 1. Compatible with Question-answer on same page 
 - [ ] 2. Compatible with Question-answer on alternate page
