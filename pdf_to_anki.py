@@ -21,6 +21,18 @@ except:
 	pass
 	
 def convert_to_image(path_to_pdf , deck_name):
+	print("Devolped by ")
+	print("      @@@       @@@.        @@@.   @@@@@@@@@@&     @@   @@@@@@@@@@@@@   ")
+	print("     @@@@%      @@@@       @@@@.   @@        @@#   @@        @@         ")
+	print("    @@  @@,     @@ @@     %@ @@.   @@        @@/   @@        @@         ")
+	print("   @@    @@     @@  @@    @( @@.   @@@@@@@@@@/     @@        @@         ")  
+	print("  @@@@@@@@@@    @@   @@  @@  @@.   @@        @@    @@        @@         ")
+	print(" @@        @@   @@    @@@@   @@.   @@        @@    @@        @@         ")
+	print(" @@        @@   @@    @@@@   @@.   @@        @@    @@        @@         ")
+	print("[So that he can be spare himself from AKSHDEEP's tourture!] ")
+	print()
+	print()
+	print()
 	print("Starting to load pdf")
 	images = cfp(path_to_pdf)
 	print("pdf loaded to memory")
@@ -82,4 +94,3 @@ df = pd.DataFrame(complete_list)
 #print(df)
 
 df.to_csv("output.csv", index = None,header=False)
-
