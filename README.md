@@ -27,5 +27,5 @@ Once the setup is done, in all subsequent times, just type "python pdf_to_anki.p
 - [ ] Integrated with anki's memory algorithm
 - [ ] Smarter/AI based question revision
 
-Interested in contributing?
+Interested in contributing to the app? (This app is a seperate project than this repository)
 Contact me. - ap4.singh@gmail.com
