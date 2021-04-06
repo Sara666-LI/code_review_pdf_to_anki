@@ -4,14 +4,15 @@ Python implementation , one-line implementation for coding newbies!
 
 
 ## Goals - 
-- [x] 1. Compatible with Question-answer on same page 
-- [ ] 2. Compatible with Question-answer on alternate page
-- [x] 3. Choosing dimensions to crop
-- [ ] 4. Automate file copying part
-- [ ] 5. GUI to select dimensions to crop
+- [x] Compatible with Question-answer on same page
+- [ ] Add Documentation to install and use 
+- [ ] Compatible with Question-answer on alternate page
+- [x] Choosing dimensions to crop
+- [ ] Automate file copying part
+- [ ] GUI to select dimensions to crop
 
-## How to install?
- - make sure you have python installed on your device.
+## How to install? (Documentation Pending)
+ - Make sure you have python installed on your device.
    - To do so, go to your command line/Terminal, type "python", and press enter.
    - Output like " " would be generated.   
  - make sure you have pip instlled.(Allows you to install python modules)
