@@ -1,0 +1,113 @@
+import pdf2image
+from pdf2image import convert_from_path as cfp
+import ntpath
+import cv2
+import os
+import time
+from glob import glob
+
+# Create directories for storing images if they do not exist
+try:
+    os.mkdir("images")
+except FileExistsError:  # Specific exception for better clarity
+    pass
+
+try:
+    os.mkdir("images_final")
+except FileExistsError:  # Specific exception for better clarity
+    pass
+
+def convert_to_image(path_to_pdf, deck_name):
+    """
+    Converts PDF pages to images and saves them in the 'images' directory.
+    
+    Args:
+        path_to_pdf (str): Path to the PDF file.
+        deck_name (str): Name prefix for the output image files.
+    """
+    # Print developer information - should be removed or replaced with proper documentation
+    print("Developed by ")
+    print("      @@@       @@@.        @@@.   @@@@@@@@@@&     @@   @@@@@@@@@@@@@   ")
+    print("     @@@@%      @@@@       @@@@.   @@        @@#   @@        @@         ")
+    print("    @@  @@,     @@ @@     %@ @@.   @@        @@/   @@        @@         ")
+    print("   @@    @@     @@  @@    @( @@.   @@@@@@@@@@/     @@        @@         ")  
+    print("  @@@@@@@@@@    @@   @@  @@  @@.   @@        @@    @@        @@         ")
+    print(" @@        @@   @@    @@@@   @@.   @@        @@    @@        @@         ")
+    print(" @@        @@   @@    @@@@   @@.   @@        @@    @@        @@         ")
+    print("[So that he can be spare himself from AKSHDEEP's torture!] ")
+    print()
+    print()
+    print()
+    print("Starting to load pdf")
+    
+    # Load PDF and convert to images
+    images = cfp(path_to_pdf)
+    print("pdf loaded to memory")
+
+    # Save images to 'images' directory with unique filenames
+    for i in range(len(images)):
+        images[i].save("./images/" + deck_name + str(i) + str(time.time()) + ".jpg", "JPEG")
+        if i % 10 == 0:
+            print("saved", i)
+
+# Call the function to convert the sample PDF to images
+convert_to_image("sample.pdf", "deck_name")
+
+file_list = glob('./images/*.jpg')
+#print(file_list)
+
+rand_int = time.time()
+rand_int = round(rand_int)
+
+complete_list = []
+
+direct_copy = True  # Variable is declared but not used
+
+def crop_doublet_anki_notes(image, x, y):
+    """
+    Crops the input image into two parts based on given ratios.
+    
+    Args:
+        image (numpy.ndarray): The input image to be cropped.
+        x (float): Ratio for the first crop.
+        y (float): Ratio for the second crop.
+        
+    Returns:
+        tuple: Two cropped images.
+    """
+    a = int(x * (image.shape[0]) / (x + y))
+    img1 = image[0:a, 0:image.shape[1]]
+    img2 = image[a:image.shape[0], 0:image.shape[1]]
+    return img1, img2
+
+# Process each image and crop them
+for filename in file_list: 
+    image = cv2.imread(filename)
+
+    # Crop the image into two parts
+    img1, img2 = crop_doublet_anki_notes(image, 14, 13.5)
+
+    filename = ntpath.basename(filename)
+
+    a1 = filename[0:-4] + str(rand_int) + "_01" + ".jpg"
+    a2 = filename[0:-4] + str(rand_int) + "_02" + ".jpg"
+    name1 = "<img src='" + a1 + "'>"
+    name2 = "<img src='" + a2 + "'>"
+    
+    # Save cropped images to 'images_final' directory
+    cv2.imwrite("./images_final/" + a1, img1)
+    cv2.imwrite("./images_final/" + a2, img2)
+    
+    complete_list.append([name1, name2])
+
+import pandas as pd
+df = pd.DataFrame(complete_list)
+#print(df)
+
+# Save the image filenames and paths to a CSV file
+df.to_csv("output.csv", index=None, header=False)
+#Use this Output.csv file to load the Anki deck into Anki software.
+
+# Before loading the CSV file, copy the images generated in images_final folder to the following path - 
+# "./home/$$$$$YOUR USER NAME$$$$$$$$/.local/share/Anki2/User 1/collection.media/"     # in Ubuntu 
+# e.g.  "./home/amrit/.local/share/Anki2/User 1/collection.media/"
