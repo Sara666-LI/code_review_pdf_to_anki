@@ -1,3 +1,32 @@
+"""
+Review Summary
+Well-Designed Code: The code could benefit from better error handling and separation of concerns (e.g., directory creation could be refactored into a separate function).
+
+Functionality: The script appears to convert PDF pages to images, crop them, and save them. Ensure that all functionality meets user requirements.
+
+UI Changes: The script does not involve a UI but prints messages to the console. These messages are informative but could be made more professional.
+
+Parallel Programming: Not applicable, as there is no parallelism.
+
+Code Complexity: The code is generally straightforward but could be simplified. For example, avoid redundant variable assignments and remove unused variables.
+
+Future-Proofing: No unnecessary future-proofing is observed.
+
+Unit Tests: There are no unit tests. Adding tests to verify functionality would improve robustness.
+
+Naming Conventions: Variable and function names are clear but could be improved for consistency (e.g., crop_doublet_anki_notes could be more descriptive).
+
+Comments: Comments should focus on explaining why something is done rather than what is being done. The current comments are mostly adequate but could be enhanced.
+
+Documentation: Function docstrings are provided but could be more detailed. Ensure all public functions have docstrings explaining their purpose and arguments.
+
+Code Style: The code mostly adheres to common Python style guides but could be improved by catching specific exceptions and removing commented-out code.
+
+"""
+
+
+
+
 import pdf2image
 from pdf2image import convert_from_path as cfp
 import ntpath
