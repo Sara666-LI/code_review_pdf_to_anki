@@ -24,9 +24,6 @@ Code Style: The code mostly adheres to common Python style guides but could be i
 
 """
 
-
-
-
 import pdf2image
 from pdf2image import convert_from_path as cfp
 import ntpath
